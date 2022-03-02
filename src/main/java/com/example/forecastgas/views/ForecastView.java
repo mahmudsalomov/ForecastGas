@@ -1,17 +1,14 @@
 package com.example.forecastgas.views;
 
-import com.example.forecastgas.model.Forecast;
-import com.example.forecastgas.model.Person;
+import com.example.forecastgas.model.ForecastTest;
 import com.example.forecastgas.repository.PersonRepository;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.Route;
 
 import java.util.ArrayList;
@@ -28,9 +25,9 @@ public class ForecastView extends VerticalLayout {
     private EmailField email=new EmailField("email");
 
 
-    private Grid<Forecast> grid=new Grid<>(Forecast.class);
+    private Grid<ForecastTest> grid=new Grid<>(ForecastTest.class);
 //    private Binder<Forecast> binder=new Binder<>(Forecast.class);
-    private List<Forecast> people=new ArrayList<>();
+    private List<ForecastTest> people=new ArrayList<>();
 
     public ForecastView(PersonRepository personRepository){
         this.personRepository=personRepository;

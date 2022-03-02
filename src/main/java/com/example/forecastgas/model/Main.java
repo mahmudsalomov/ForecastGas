@@ -16,9 +16,16 @@ public class Main {
                 0.249793,
                 86.0,
                 323.0,
-                347
+                347,
+                204,
+                60,
+                10,
+                50,
+                4,
+                10,
+                30
         );
-        Forecast forecast=new Forecast(
+        ForecastTest forecastTest=new ForecastTest(
                 2021,
                 126.4,
                 307.2,
@@ -28,6 +35,25 @@ public class Main {
                 247.33
                 );
 
-        System.out.println(forecast);
+        Forecast forecast=new Forecast(
+                2021,
+                126.4,
+                307.2,
+                6,
+                247.33,
+                186.6,
+                reserves
+
+        );
+
+        System.out.println(forecastTest);
+//        System.out.println(forecast);
+//        for (int i = 0; i <100 ; i++) {
+//            System.out.println(forecast);
+//            forecast=forecast.next(330);
+//            if (forecast==null) break;
+//        }
+
+
     }
 }
