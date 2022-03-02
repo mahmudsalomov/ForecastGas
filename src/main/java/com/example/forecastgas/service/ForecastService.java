@@ -1,6 +1,7 @@
 package com.example.forecastgas.service;
 
 
+import com.example.forecastgas.chart.Charter;
 import com.example.forecastgas.handler.*;
 import com.example.forecastgas.model.Forecast;
 import com.example.forecastgas.model.ForecastTest;
@@ -66,8 +67,7 @@ public class ForecastService {
         handlers.add(new DeltaPressureHandler());
         handlers.add(new MouthPressureHandler());
         new ForecastService(handlers).calculate(forecast,reserves);
-        inspect(Forecast.class);
-
+//        inspect(Forecast.class);
 //        System.out.println(forecast);
 //        for (int i = 0; i <100 ; i++) {
 //            System.out.println(forecast);
@@ -78,7 +78,7 @@ public class ForecastService {
 
 
     public static void chart(List<Forecast> forecasts){
-        List<Integer> yearList=new ArrayList<>();
+        List<Double> yearList=new ArrayList<>();
 
         List<Double> Q_za_god=new ArrayList<>();
         List<Double> Q_otb=new ArrayList<>();
@@ -94,7 +94,7 @@ public class ForecastService {
         List<Double> V_ustivoy=new ArrayList<>();
 
         forecasts.forEach(f->{
-            yearList.add(f.god);
+            yearList.add((double) f.god);
             Q_za_god.add(f.Q_za_god);
             Q_otb.add(f.Q_otb);
             sredniy_debit_skvajina.add(f.sredniy_debit_skvajina);
@@ -108,6 +108,10 @@ public class ForecastService {
             P_ustivoy.add(f.P_ustivoy);
             V_ustivoy.add(f.V_ustivoy);
         });
+
+        Charter.chart("Q_za_god","God","X","Q_za_god",yearList,Q_za_god).draw();
+        Charter.chart("kol_skvajina","God","X","kol_skvajina",yearList,kol_skvajina).draw();
+        Charter.chart("sredniy_debit_skvajina","God","X","sredniy_debit_skvajina",yearList,sredniy_debit_skvajina).draw();
 
 
 
@@ -135,6 +139,7 @@ public class ForecastService {
         }
         System.out.println("SIZE = "+list.size());
         list.forEach(System.out::println);
+        chart(list);
     }
 
 

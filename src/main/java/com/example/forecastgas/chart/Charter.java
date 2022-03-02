@@ -38,6 +38,7 @@ public class Charter {
         return chart(title, x_title, y_title, seriesTitle, temp_x,temp_y);
     }
 
+
     public static Charter chart(String title, String x_title, String y_title, String seriesTitle, List<Double> x_list, List<Double> y_list){
         return Charter
                 .builder()
