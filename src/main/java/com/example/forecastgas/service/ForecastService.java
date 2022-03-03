@@ -46,7 +46,7 @@ public class ForecastService {
                 10,
                 50,
                 4,
-                4,
+                10,
                 20
         );
 
@@ -65,7 +65,7 @@ public class ForecastService {
         handlers.add(new ProductionHandler());
         handlers.add(new WellHandler());
         handlers.add(new DeltaPressureHandler());
-        handlers.add(new MouthPressureHandler());
+        handlers.add(new SpeedHandler());
         new ForecastService(handlers).calculate(forecast,reserves);
 //        inspect(Forecast.class);
 //        System.out.println(forecast);
@@ -146,7 +146,10 @@ public class ForecastService {
     private Handler getHandlerByCheck(Forecast forecast, GasReserves reserves){
         System.out.println(handlers.size());
         for (Handler handler : handlers) {
-            if (handler.check(forecast, reserves)) return handler;
+            if (handler.check(forecast, reserves)) {
+                System.out.println(handler);
+                return handler;
+            }
         }
         return null;
     }
